@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button class="nav-btn">nav button</button>
+    </div>
+    <script>
+        // 类 EventBus -> 事件总线对象
+        class EventBus {
+            constructor() {
+                this.eventMap = {}
+            }
+
+            on(eventName, eventFn) {
+                let eventFns = this.eventMap[eventName]
+
+                if (!eventFns) {
+                    eventFns = []
+                    this.eventMap[eventName] = eventFns
+                }
+                eventFns.push(eventFn)
+            }
+
+            off(eventName, eventFn) {
+                let eventFns = this.eventMap[eventName]
+
+                if (!eventFns) return
+
+                for(let i = 0; i < eventFns.length; i++) {
+                    const fn = eventFns[i]
+
+                    if (fn === eventFn) {
+                        eventFns.splice(i, 1)
+                        break
+                    }
+                }
+
+                if (eventFns.length === 0) {
+                    delete this.EventMap[eventName]
+                }
+            }
+
+            emit(eventName, ...args) {
+                let eventFns = this.eventMap[eventName]
+
+                if (!eventFns) return
+                eventFns.forEach(fn => {
+                    fn(...args)
+                })
+            }
+        }
+
+        const eventBus = new EventBus()
+
+        eventBus.on('navClick', (name, age, height) => {
+            console.log('navClick listener 01', name, age, height)
+        })
+
+        const click = (name, age, height) => {
+            console.log('navClick listener 02', name, age, height)
+        }
+        eventBus.on('navClick', click)
+
+        setTimeout(() => {
+            eventBus.off('navClick', click)
+        }, 5000)
+
+        eventBus.on('asideClick', (name, age, height) => {
+            console.log('asideClick listener 03', name, age, height)
+        })
+
+        const navBtn1 = document.querySelector('.nav-btn')
+
+        navBtn1.onclick = function() {
+            console.log('自己监听到')
+
+            eventBus.emit('navClick', 'why', 18, 1.88)
+        }
+    </script>
+</body>
+</html>

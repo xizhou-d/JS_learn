@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button>取消</button>
+    <!-- <script src="./06_throttle基本实现-v1.js"></script> -->
+    <!-- <script src="./08_throttle基本实现-v3-trailing的实现.js"></script> -->
+    <script src="./09_throttle基本实现-v4-this-event参数.js"></script>
+
+    <script>
+        const inputEl = document.querySelector('input')
+
+        let counter = 0
+        const inputChange = function(event) {
+            console.log('this', this)
+            console.log('event', event)
+            console.log(`请求了网络数据～${++counter}`)
+        }
+
+        const throttleChange = throttle(inputChange, 3000, {leading: true, trailing: true })
+        inputEl.oninput = throttleChange
+
+        const cancelBtn = document.querySelector('button')
+        cancelBtn.onclick = throttleChange.cancel
+
+    </script>
+</body>
+</html>
