@@ -5,10 +5,9 @@ function ajax({
     timeout = 10000,
     headers = {},
 } = {}) {
-    return new Promise((resolve, reject) => {
-        // 1. 创建 xhr 对象
-        const xhr = new XMLHttpRequest()
-
+    // 1. 创建 xhr 对象
+    const xhr = new XMLHttpRequest()
+    const promise =  new Promise((resolve, reject) => {
         // 2. 设置监听
         xhr.onload = function () {
             if (xhr.status >= 200 && xhr.status < 300) {
@@ -43,4 +42,9 @@ function ajax({
             xhr.send(JSON.stringify(data))
         }
     })
+    console.log('xhr00000', xhr)
+
+    promise.xhr = xhr
+
+    return promise
 }

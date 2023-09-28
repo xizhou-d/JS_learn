@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>取消请求</button>
+    <script>
+        const xhr = new XMLHttpRequest()
+
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                console.log(xhr.response)
+            }
+        }
+
+        // 监听超时：超时之后触发
+        xhr.ontimeout = function() {
+            console.log('请求过期: timeout')
+        }
+
+        // 监听取消：取消请求之后触发
+        xhr.onabort = function() {
+            console.log('请求取消: abort')
+        }
+
+        xhr.responseType = 'json'
+        // timeout: 浏览器达到过期事件还没有获取到对应的结果时，取消本次请求
+        // xhr.timeout = 3000
+
+        xhr.open('get', 'http://123.207.32.32:1888/01_basic/timeout')
+
+        xhr.send()
+
+
+        // 取消请求
+        const cancelButtonElement = document.querySelector('button')
+        cancelButtonElement.onclick = function() {
+            xhr.abort()
+        }
+    </script>
+</body>
+</html>

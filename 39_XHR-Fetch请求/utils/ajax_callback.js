@@ -18,8 +18,12 @@ function ajax({
             failure({ status: xhr.status, statusText: xhr.statusText })
         }
     }
+
     // 3. 设置数据类型
     xhr.responseType = 'json'
+
+    // 3.1 设置超时时间
+    xhr.timeout = timeout
     /** 
      * 如果本来是 get 请求，但是用户 直接传递了一个 data 对象，此时需要处理：将 data 组装成 query 拼接到 url 后面
      */
@@ -40,4 +44,7 @@ function ajax({
         // 5. 发送请求
         xhr.send(JSON.stringify(data))
     }
+
+    // 返回 xhr, 如果在外部想要取消，可以直接调用 xhr.abort() 方法取消请求
+    return xhr
 }
