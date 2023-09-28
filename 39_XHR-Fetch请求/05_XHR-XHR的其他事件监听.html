@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 创建 xhr 对象
+        const xhr = new XMLHttpRequest()
+
+        // 2. 监听状态的改变（宏任务）
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState !== XMLHttpRequest.DONE) return
+        }
+        // 可以在 onload 中请求数据
+        xhr.onload = function() {
+            const res = JSON.parse(xhr.response)
+            console.log('res', res)
+        }
+        // 3. 配置请求
+        xhr.open('get', 'http://123.207.32.32:8000/home/multidata')
+        // 4. 发送请求
+        xhr.send()
+    </script>
+</body>
+</html>
+
+<!-- 
+    除了onreadystatechange还有其他的事件可以监听
+         loadstart:请求开始。
+         progress: 一个响应数据包到达，此时整个 response body 都在 response 中。
+         abort:调用 xhr.abort() 取消了请求。
+         error:发生连接错误，例如，域错误。不会发生诸如 404 这类的 HTTP 错误。
+         load:请求成功完成。
+         timeout:由于请求超时而取消了该请求(仅发生在设置了 timeout 的情况下)。
+         loadend:在 load，error，timeout 或 abort 之后触发。
+ -->

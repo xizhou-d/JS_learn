@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const xhr = new XMLHttpRequest()
+
+        xhr.onload = function() {
+            console.log(xhr.response)
+        }
+
+        xhr.reponseType = 'json'
+
+        xhr.open('post', 'http://123.207.32.32:1888/02_param/postjson')
+
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.send(JSON.stringify({name: 'xizhou', age: 29, height: 180}))
+    </script>
+</body>
+</html>

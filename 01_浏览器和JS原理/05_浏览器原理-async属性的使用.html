@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">app</div>
+    <div class="nav" nav></div>
+    <div class="box">box</div>
+    <div class="content">content</div>
+
+    <!-- 
+        async 是不会不能控制顺序的： 
+        1. 只要下载完就立即执行，此时 DOM Tree 是否构建完成都不确定； 
+        2. 多个 async 脚本不是按照顺序执行的，谁先下载完谁先执行；
+        3. 
+    -->
+    <script src="./js/test.js" async></script>
+    <script src="./js/demo.js" async></script>
+
+    <div class="last">last</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 创建 xhr 对象
+        const xhr = new XMLHttpRequest()
+        // 2. 监听请求
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState !== XMLHttpRequest.DONE) return
+
+            if (xhr.status >= 200 && xhr.status < 300) {
+                console.log('res', JSON.parse(xhr.response))
+            } else {
+                console.log('error')
+            }
+        }
+        // 修改响应数据的类型
+        xhr.reponseType = 'json'
+        // 3. 配置网络请求
+
+        // 3.1.传递参数方式一: get -> query
+        // xhr.open('get', 'http://123.207.32.32:1888/02_param/get?name=xizhou&age=28&height=180')
+
+        // 3.2 传递参数方式二: post -> urlencoded
+        xhr.open('post', 'http://123.207.32.32:1888/02_param/posturl')
+
+        // 4。 发送请求: post 请求参数 body 是通过 xhr.send() 的参数传递过去的，但是在发送请求要指定，参数是什么类型，否则服务器不会解析
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;')
+        xhr.send('name=xizhou&age=28&height=180')
+    </script>
+</body>
+</html>

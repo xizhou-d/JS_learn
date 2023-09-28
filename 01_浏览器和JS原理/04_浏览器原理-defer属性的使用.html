@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 从某种角度来说，defer可以提高页面的性能，并且推荐放到head元素中; -->
+    <!-- ❗️ defer仅适用于外部脚本，对于script默认内容会被忽略。 -->
+    <!-- JS会阻塞: 加入这个 js 文件特别大，那么下载要很长时间，执行也需要很长时间 -->
+    <!-- 总结一：加上 defer 之后，JS 文件的下载和执行，不会影响后面的 DOM Tree 的构建 -->
+    <script src="./js/test.js" defer></script>
+    <!-- 多个带defer的脚本是可以保持正确的顺序执行的 -->
+    <script src="./js/demo.js" defer></script>
+
+</head>
+
+<body>
+
+    <div class="app">app</div>
+    <div class="nav" nav></div>
+    <div class="box">box</div>
+    <div class="content">content</div>
+
+    <script>
+        // 总结三： defer 代码是在 DOMContentLoaded 事件发出之前执行
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('DOMContentLoaded');
+        })
+    </script>
+
+    <div class="last">last</div>
+</body>
+
+</html>

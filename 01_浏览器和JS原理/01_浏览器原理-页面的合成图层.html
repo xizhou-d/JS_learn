@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+
+        .container {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+
+            /* 会生成新的图层 */
+            /* position: fixed; */
+            /* transition 会在执行动画的时候生成新的图层， 比如鼠标浮动到元素上 */
+            transition: all 2s ease; 
+
+            /* 不会生成新的图层 */
+            /* transform: translate(10px) */
+        }
+
+        .container:hover {
+            transform: translate(10px)
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <div class="container"></div>
+</body>
+</html>

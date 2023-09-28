@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 创建 xhr 对象
+        const xhr = new XMLHttpRequest()
+
+        // 2. 监听状态的改变（宏任务）
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState !== XMLHttpRequest.DONE) return
+        }
+        // 可以在 onload 中请求数据
+        xhr.onload = function() {
+            // const res = JSON.parse(xhr.response)
+            // ❓ 接口返回的数据明明是 json 格式的，为什么 收到的数据是一个字符串？
+            console.log('res', xhr.response)
+            console.log('xhr.responseText', xhr.responseText)
+            console.log('xhr.responseXml', xhr.responseXML)
+        }
+        // 3. 告知 xhr 收到的数据类型(默认被设置成了 text，收到的数据就成了一个字符串)，修改类型后，我们在 unload 事件中获取到的数据就是设置的类型
+        // xhr.responseType = 'text' // 默认设置的
+        // xhr.responseType = 'json'
+
+        // 4. 配置网络请求
+        // 4.1 json 类型的接口
+        // xhr.open('get', 'http://123.207.32.32:8000/home/multidata')
+        // 4.2 json 类型的接口
+        // xhr.open('get', 'http://123.207.32.32:1888/01_basic/hello_json')
+        // 4.3 text 类型的接口: 如果 设置了 xhr.responseType = 'json'，那么返回 text 类型数据的接口，返回的是 null, 去掉 xhr.responseType = 'json' 使用默认的 xhr.responseType = 'text'
+        // xhr.open('get', 'http://123.207.32.32:1888/01_basic/hello_text')
+        // 4.4 xml 类型的接口
+        xhr.open('get', 'http://123.207.32.32:1888/01_basic/hello_xml')
+
+        // 5. 发送请求
+        xhr.send()
+    </script>
+</body>
+</html>

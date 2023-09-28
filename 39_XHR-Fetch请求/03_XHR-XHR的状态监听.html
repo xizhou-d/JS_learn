@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 创建（实例化）XMLHttpRequest 请求
+        const xhr = new XMLHttpRequest()
+        // 2. 监听状态的改变 (宏任务)
+        xhr.onreadystatechange = function() {
+            // 打印四次： 1，2，3，4
+            console.log('stateChange', xhr.readyState)
+            // 1. 如果状态不是 done 状态，直接返回
+            if (xhr.readyState !== XMLHttpRequest.DONE) return
+
+            const res = JSON.parse(xhr.response)
+            console.log('res', res)
+        }
+        // 3. 配置请求
+        // method: 请求方式 (get/post/put/delete/patch...)
+        // url: 请求地址
+        xhr.open('get', 'http://123.207.32.32:8000/home/multidata')
+        // 4. 发送请求 (浏览器帮助我们发送请求)
+        xhr.send()
+    </script>
+</body>
+</html>

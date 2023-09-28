@@ -27,10 +27,10 @@ const iterableObj = {
 // console.log(iterator.next())
 // console.log(iterator.next())
 
-const obj = {
-    name: 'why',
-    age: 18
-}
+// const obj = {
+//     name: 'why',
+//     age: 18
+// }
 for (let item of iterableObj) {
     console.log('item', item)
 }

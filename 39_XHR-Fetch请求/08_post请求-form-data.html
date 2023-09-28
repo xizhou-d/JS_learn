@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form class="info">
+        <input type="text" name="username" />
+        <input type="password" name="password" />
+    </form>
+    <button id="submit">发送请求</button>
+    <script>
+        const sendbtn = document.querySelector('#submit')
+        sendbtn.onclick = function () {
+            const formElement = document.querySelector('form')
+            console.log('formElement', formElement)
+            const xhr = new XMLHttpRequest()
+
+            xhr.onload = function () {
+
+            }
+
+            xhr.open('post', 'http://123.207.32.32:1888/02_param/postform')
+
+            // 将 form 元素转换成 formdata 对象
+            const formData = new FormData(formElement)
+            console.log('formData', formData)
+            xhr.send(formData)
+        }
+    </script>
+</body>
+
+</html>

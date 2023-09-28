@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./utils/ajax_callback.js"></script>
+    <script src="./utils/ajax_promise.js"></script>
+    <script>
+        // callback 
+        // ajax({
+        //     // get: http://123.207.32.32:8000/home/multidata http://123.207.32.32:1888/02_param/get?name=xizhou&age=28&height=180    post: http://123.207.32.32:1888/02_param/postjson
+        //     method: 'post',
+        //     url: 'http://123.207.32.32:1888/02_param/postjson',
+        //     data: {
+        //         name: 'xizhou',
+        //         age: 29
+        //     },
+        //     success: function (res) {
+        //         console.log('res', res)
+        //     },
+        //     failure: function (err) {
+        //         console.log('err', err)
+        //         console.log('err.status', err.status)
+        //         console.log('err.statusText', err.statusText)
+        //     }
+        // })
+
+        // promies
+        ajax({
+            // get: http://123.207.32.32:8000/home/multidata http://123.207.32.32:1888/02_param/get?name=xizhou&age=28&height=180    post: http://123.207.32.32:1888/02_param/postjson
+            method: 'post',
+            url: 'http://123.207.32.32:1888/02_param/postjson',
+            data: {
+                name: 'xizhou',
+                age: 29
+            },
+            success: function (res) {
+                console.log('res', res)
+            },
+            failure: function (err) {
+                console.log('err', err)
+                console.log('err.status', err.status)
+                console.log('err.statusText', err.statusText)
+            }
+        }).then(res => {
+            console.log('res', res)
+        }).catch(error => {
+            console.log('error', error)
+        })
+    </script>
+</body>
+
+</html>

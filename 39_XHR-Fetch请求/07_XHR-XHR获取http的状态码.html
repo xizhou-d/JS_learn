@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 创建 xhr 对象
+        const xhr = new XMLHttpRequest()
+
+        // 2. 监听状态的改变（宏任务）
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState !== XMLHttpRequest.DONE) return
+        }
+        // 可以在 onload 中请求数据
+        xhr.onload = function() {
+            const res = xhr.response
+            if (xhr.status >= 200 && xhr.status < 300) {
+                console.log(xhr.response)
+            } else {
+                console.log('onload', xhr.status)
+                console.log('onload', xhr.statusText)
+            }
+        }
+        xhr.onerror = function () {
+            console.log('onerror', xhr.status)
+            console.log('onerror', xhr.statusText)
+        }
+        // 3. 告知 xhr 收到的数据类型(默认被设置成了 text，收到的数据就成了一个字符串)，修改类型后，我们在 unload 事件中获取到的数据就是设置的类型
+        xhr.responseType = 'json'
+
+        // 4. 配置网络请求
+        xhr.open('get', 'http://123.207.32.32:/home/multidata/dlskfk')
+
+        // 5. 发送请求
+        xhr.send()
+    </script>
+</body>
+</html>

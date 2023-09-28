@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button id="cancel">取消</button>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-umd-min.js"></script> -->
+    <!-- <script src="./01_debounce基本实现-v1.js"></script> -->
+    <!-- <script src="./02_debounce基本实现-v2-this-event参数.js"></script> -->
+    <!-- <script src="./03_debounce基本实现-v3-立即执行.js"></script> -->
+    <script src="./02_手写-debounce.js"></script>
+    <script>
+        const inputEl = document.querySelector('input')
+        let count = 0
+
+        const handleInput = function (event) {
+            console.log(`发生了网络请求～${++count}`, this, event)
+        }
+
+        // inputEl.oninput = handleInput
+
+        // 防抖
+        // inputEl.oninput = _.debounce(handleInput, 500)
+
+        const debounceChange = debounce(handleInput, 2000, true)
+        inputEl.oninput = debounceChange
+
+        // 取消功能
+        const cancelBtn = document.querySelector('#cancel')
+        cancelBtn.onclick = function() {
+            debounceChange.cancel() 
+        }
+
+        // 节流
+
+        // 
+    </script>
+</body>
+
+</html>
