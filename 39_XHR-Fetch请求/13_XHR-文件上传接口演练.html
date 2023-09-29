@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file">
+    <button>upload</button>
+    <script>
+        const btnEL = document.querySelector('button')
+        const fileEl = document.querySelector('input')
+
+        btnEL.onclick = function() {
+            const xhr = new XMLHttpRequest()
+
+            xhr.onload = function() {
+                console.log(xhr.response)
+            }
+
+            const formData = new FormData()
+            console.log('aaaaa', fileEl.files)
+            formData.append('pic', fileEl.files[0])
+            xhr.open('post', 'http://123.207.32.32:1888/02_param/upload')
+            // xhr.setRequestHeader('Content-Type', 'http://123.207.32.32:1888/02_param/upload')
+            xhr.send(formData)
+        }
+    </script>
+</body>
+</html>

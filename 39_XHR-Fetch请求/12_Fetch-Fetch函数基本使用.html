@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. fetch 发送 get 请求
+        // fetch('http://123.207.32.32:8000/home/multidata').then(result => {
+        //     console.log('result', result)
+        //     // 1. 获取到 response 
+        //     const response = result
+        //     // 2. 获取具体的结果
+        //     response.json().then(res => {
+        //         console.log('res', res)
+        //     })
+        // }).catch(error => {
+        //     console.log('error', error)
+        // })
+
+        // 1.1. 优化方式一
+        // fetch('http://123.207.32.32:8000/home/multidata').then(result => {
+        //     console.log('result', result)
+        //     // 1. 获取到 response 
+        //     const response = result
+        //     // 2. 获取具体的结果
+        //     return response.json()
+        // }).then(res => {
+        //     console.log('res', res)
+        // }).catch(error => {
+        //     console.log('error', error)
+        // })
+
+        // 1.2. 优化方式三
+        // async function getData() {
+        //     const response = await fetch('http://123.207.32.32:8000/home/multidata')
+        //     const res = await response.json()
+        //     console.log('res', res)
+        // }
+        // getData()
+
+
+        // 2. post 请求且有参数 post -> json
+        // async function getData() {
+        //     const response = await fetch('http://123.207.32.32:1888/02_param/postjson', {
+        //         method: 'post',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         // 这里尤其要注意：Content-Type 设置为 application/json 后，body 一定要转换成 json 格式
+        //         body: JSON.stringify({
+        //             name: 'xizhou',
+        //             age: 29
+        //         })
+        //     })
+        //     console.log('response', response)
+
+        //     const res = await response.json()
+        //     console.log('res', res)
+        // }
+
+        // getData()
+
+
+
+        // 3. post 请求 post -> formdata
+        const formData = new FormData()
+        formData.append('name', 'xizhou')
+        formData.append('age', 29)
+        async function getData() {
+            const response = await fetch('http://123.207.32.32:1888/02_param/postform', {
+                method: 'post',
+                // headers: {
+                //     'Content-Type': 'application/json'
+                // },
+                // 如果 headers 没有设置 Content-Type, body 需要传一个 formData 格式的数据
+                body: formData
+            })
+            console.log('response', response)
+
+            const res = await response.json()
+            console.log('res', res)
+        }
+
+        getData()
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file">
+    <button>upload</button>
+    <script>
+        const btnEL = document.querySelector('button')
+        const fileEl = document.querySelector('input')
+
+        btnEL.onclick = async function() {
+            const formData = new FormData()
+            formData.append('pic', fileEl.files[0])
+
+            const response = await fetch('http://123.207.32.32:1888/02_param/upload', {
+                method: 'post',
+                body: formData
+            })
+
+            const res = await response.json()
+            console.log('res', res)
+        }
+    </script>
+</body>
+</html>
