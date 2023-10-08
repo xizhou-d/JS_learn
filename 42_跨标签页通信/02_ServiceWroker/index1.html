@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="content">
+    <button id="btn">发送数据</button>
+    <script>
+        // 注册 service worker
+        navigator.serviceWorker.register('sw.js').then(() => {
+            console.log('index1.html service work 注册成功！')
+        })
+        const content = document.querySelector('#content')
+        const button = document.querySelector('#btn')
+
+        button.onclick = function() {
+            navigator.serviceWorker.controller.postMessage({
+                value: content.value
+            })
+        }
+    </script>
+</body>
+</html>

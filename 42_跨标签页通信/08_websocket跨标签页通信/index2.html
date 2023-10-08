@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 建立 websocket 连接
+        const ws = new WebSocket('ws://localhost:3000')
+
+        let count = 1   // 用于计数
+
+        // ws.open 会在建立连接之后触发
+        ws.onopen = function() {
+            ws.onmessage = function(event) {
+                const op = document.createElement('p')
+
+                op.innerHTML = `第 ${count} 次接收到消息：${event.data}`
+                document.body.appendChild(op)
+                count++
+            }
+        }
+
+        // 关闭窗口或者刷新的时候需要关闭 websocket 连接
+        window.onbeforeunload = function() {
+            ws.close()
+        }
+    </script>
+</body>
+</html>

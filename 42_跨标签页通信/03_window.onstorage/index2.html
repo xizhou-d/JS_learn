@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /** 
+         * LocalStorage window.onstorage 监听
+         *   在 Web Storage 中，每次将一个值存储到本地存储时，就会触发一个 storage 事件。由事件监听器发送给回调函数的事件对象有几个自动填充的属性如下:
+         *   key: 告诉我们被修改的条目的键.
+         *   newValue: 告诉我们被修改后的新值
+         *   oldValue: 告诉我们修改前的值。
+         *   storageArea: 指向事件监听对应的 Storage 对象
+         *   ur/: 原始触发 storage 事件的那个网页的地址
+         *   注意: 这个事件只在同一域下的任何窗口或者标签上触发，并且只在被存储的条目改变时触发。
+         */
+        window.onstorage = function(event) {
+            console.log('event', event)
+        }
+    </script>
+</body>
+</html>

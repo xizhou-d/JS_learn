@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="msg">
+    <button id="send">发送信息</button>
+    <script>
+        const msg = document.querySelector('#msg')
+        const send = document.querySelector('#send') 
+
+        // 建立 websocket 连接
+        const ws = new WebSocket('ws://localhost:3000')
+
+        send.onclick = function() {
+            if (msg.value.trim() !== '') {
+                console.log('msg', msg.value.trim())
+                ws.send(msg.value.trim())
+            }
+        }
+        // 关闭窗口或者刷新的时候需要关闭 websocket 连接
+        window.onbeforeunload = function() {
+            ws.close()
+        }
+    </script>
+</body>
+</html>

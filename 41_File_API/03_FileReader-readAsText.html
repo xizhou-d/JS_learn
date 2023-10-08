@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" name="" id="" multiple>
+    <script>
+        /** 
+         * FileReader.readAsText(): 读取完成后，result 属性将返回文件内容的文本字符串。
+         * 该方法的第一个参数是代表文件的 Blob 实例，第二个参数是可选的，表示文本编码，默认为 UTF-8。
+         */
+        var file = document.querySelector('input')
+        file.onchange = function(event) {
+            console.log('event.target.files', event.target.files)
+            var fileHandle = event.target.files[0]
+            // 开始读取文件
+            var reader = new FileReader()
+
+            reader.onload = function(event) {
+                console.log('event.target.result', event.target.result)
+            }
+
+            reader.readAsText(fileHandle)
+        }
+    </script>
+</body>
+</html>

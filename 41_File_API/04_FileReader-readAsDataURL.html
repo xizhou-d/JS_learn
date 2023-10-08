@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" name="" id="" multiple>
+    <img src="" alt="" id="image">
+    <script>
+        //FileReader.readAsDataURL(): 读取完成后，result 属性将返回一个 Data URL 格式(Base64编码)的字符串，代表文件内容。对于图片文件，这个字符串可以用于 <img> 元素的 src 属
+        //性。注意，这个字符串不能直接进行 Base64 解码，必须把前缀 data:*/*;base64，从字符串里删除以后，再进行解码。
+        
+        var file = document.querySelector('input')
+        var img = document.querySelector('#image')
+        file.onchange = function(event) {
+            console.log('event.target.files', event.target.files)
+            var fileHandle = event.target.files[0]
+            // 开始读取文件
+            var reader = new FileReader()
+
+            reader.onload = function(event) {
+                console.log('event.target.result', event.target.result)
+                img.src = event.target.result
+            }
+
+            reader.readAsDataURL(fileHandle)
+        }
+    </script>
+</body>
+</html>

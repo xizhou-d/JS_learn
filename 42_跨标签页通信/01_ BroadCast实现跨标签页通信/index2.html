@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=f, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 创建一个广播频道, 频道的名字必须和页面 index1.html 的一样
+        const broadCastChannel = new BroadcastChannel('channel_index1')
+
+        broadCastChannel.onmessage = function(event) {
+            console.log('event', event.data)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>计数：<output id="result"></output></p>
+    <button id="startBtn">开始计算</button>
+    <button id="stopBtn">结束计算</button>
+    <script>
+        const startBtn = document.querySelector('#startBtn')
+        const stopBtn = document.querySelector('#stopBtn')
+
+        let worker; // 用于存储 worker 进程
+
+        startBtn.onclick = function() {
+            // new Worker 可以打开一个新的线程
+            worker = new Worker('./worker.js')
+            worker.onmessage = function(event) {
+                console.log('event', event)
+                // 设置 output 的值
+                document.querySelector('#result').innerHTML = event.data
+            }
+        }
+        // worker 停止
+        stopBtn.onclick = function() {
+            worker.terminate()
+            worker = null
+        }
+    </script>
+</body>
+</html>

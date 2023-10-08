@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>新增学生</h1>
+    <div>
+        <span>学生学号：</span>
+        <input type="text" name="stuID" id="stuID">
+    </div>
+    <div>
+        <span>学生姓名：</span>
+        <input type="text" name="stuName" id="stuName">
+    </div>
+    <div>
+        <span>学生年龄：</span>
+        <input type="text" name="stuAge" id="stuAge">
+    </div>
+
+    <button id="btnButton">新增学生</button>
+    <script src="./db.js"></script>
+    <script>
+        const btn = document.querySelector('#btnButton')
+        const stuID = document.querySelector('#stuID')
+        const stuName = document.querySelector('#stuName')
+        const stuAge = document.querySelector('#stuAge')
+
+        btn.onclick = async function() {
+            let db = await openDB('stuDB', 1)
+            addData(db, 'stu', {
+                stuID: stuID.value,
+                stuName: stuName.value,
+                stuAge: stuAge.value ,
+            })
+            stuID.value = stuName.value = stuAge.value = ''
+        }
+    </script>
+
+    <!-- <script src="./db.js"></script>
+    <script>
+        openDB('stuDB', 1).then(db => {
+            addData(db, 'stu', { stuID: 1, stuName: 'xizhou', stuAge: 28 })
+            addData(db, 'stu', { stuID: 2, stuName: 'dongzhou', stuAge: 28 })
+            addData(db, 'stu', { stuID: 3, stuName: 'xia', stuAge: 28 })
+            addData(db, 'stu', { stuID: 4, stuName: '张三', stuAge: 18 })
+            addData(db, 'stu', { stuID: 5, stuName: 'lisi', stuAge: 18 })
+            addData(db, 'stu', { stuID: 6, stuName: 'wangwu', stuAge: 18 })
+            addData(db, 'stu', { stuID: 7, stuName: 'kobe', stuAge: 29 })
+            addData(db, 'stu', { stuID: 8, stuName: 'james', stuAge: 30 })
+            addData(db, 'stu', { stuID: 9, stuName: 'aifsen', stuAge: 19 })
+            addData(db, 'stu', { stuID: 10, stuName: 'yaoming', stuAge: 32 })
+        })
+    </script> -->
+</body>
+</html>

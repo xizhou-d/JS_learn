@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+        table td {
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <h1>学生表</h1>
+    <table id="tab">
+        
+    </table>
+    <script src="./db.js"></script>
+    <script>
+        function render(arr) {
+            console.log('arr', arr)
+            let table = document.querySelector('#tab')
+            table.innerHTML = `
+                <tr>
+                    <td>学号</td>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>xizhou</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>dongzhou</td>
+                    <td>19</td>
+                </tr>
+            `
+            let str = arr.map(item => {
+                return `
+                    <tr>
+                        <td>${item.stuID}</td>
+                        <td>${item.stuName}</td>
+                        <td>${item.stuAge}</td>
+                    </tr>
+                `
+            }).join('')
+
+            table.innerHTML += str
+        }
+        async function renderTable() {
+            let db = await openDB('stuDB', 1)
+
+            let stuInfo = await getAllData(db, 'stu')
+
+            render(stuInfo)
+
+            setInterval(async () => {
+                let stuInfo2 = await getAllData(db, 'stu')
+                if (stuInfo2 !== stuInfo) {
+                    console.log('stuInfo')
+                    render(stuInfo2)
+                }
+            })
+        }
+
+        renderTable()
+    </script>
+</body>
+</html>

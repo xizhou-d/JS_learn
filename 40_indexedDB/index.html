@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./indexedDb.js"></script>
+    <script>
+        /** 插入数据 */
+        // openDB('stuDB', 1).then(db => {
+        //     addData(db, 'stu', { stuID: 1, stuName: 'xizhou', stuAge: 28 })
+        //     addData(db, 'stu', { stuID: 2, stuName: 'dongzhou', stuAge: 28 })
+        //     addData(db, 'stu', { stuID: 3, stuName: 'xia', stuAge: 28 })
+        //     addData(db, 'stu', { stuID: 4, stuName: '张三', stuAge: 18 })
+        //     addData(db, 'stu', { stuID: 5, stuName: 'lisi', stuAge: 18 })
+        //     addData(db, 'stu', { stuID: 6, stuName: 'wangwu', stuAge: 18 })
+        //     addData(db, 'stu', { stuID: 7, stuName: 'kobe', stuAge: 29 })
+        //     addData(db, 'stu', { stuID: 8, stuName: 'james', stuAge: 30 })
+        //     addData(db, 'stu', { stuID: 9, stuName: 'aifsen', stuAge: 19 })
+        //     addData(db, 'stu', { stuID: 10, stuName: 'yaoming', stuAge: 32 })
+        // })
+
+        /** 根据主键 key 查询数据 */
+        // openDB('stuDB', 1).then(db => {
+        //     return getDataByKey(db, 'stu', 1)
+        // }).then(res => {
+        //     console.log('res', res)
+        // })
+
+        /** 查询所有数据，不需要 key */ 
+        // openDB('stuDB', 1).then(db => {
+        //     return getAllData(db, 'stu', 1)
+        // }).then(res => {
+        //     console.log('res-all', res)
+        // })
+
+        // /** 查询所有数据，通过游标（指针） */ 
+        // openDB('stuDB', 1).then(db => {
+        //     return cursorGetData(db, 'stu')
+        // }).then(res => {
+        //     console.log('res-cursor', res)
+        // })
+
+        /** 根据索引查询数据 */ 
+        // openDB('stuDB', 1).then(db => {
+        //     return getDataByIndex(db, 'stu', 'stuAge', 18)
+        // }).then(res => {
+        //     console.log('res-index', res)
+        // })
+
+        /** 根据索引和游标查询数据 */ 
+        // openDB('stuDB', 1).then(db => {
+        //     return getDataByIndexAndCursor(db, 'stu', 'stuAge', 18)
+        // }).then(res => {
+        //     console.log('res-index&&cursor', res)
+        // })
+
+        /** 测试分页查询 */ 
+        // openDB('stuDB', 1).then(db => {
+        //     return cursorGetDataByIndexAndPage(
+        //         db,
+        //         'stu',
+        //         '',
+        //         '',
+        //         5,
+        //         2
+        //     )
+        // }).then(res => {
+        //     console.log('res-index&&cursor', res)
+        // })
+
+        /** 测试修改数据 */
+        // openDB('stuDB', 1).then(db => {
+        //     return updateData(db, 'stu', { stuID: 1, stuName: 'xizhou', stuAge: 22 })
+        // }).then(res => {
+        //     console.log('update-data', res)
+        // })
+
+        /** 测试修改数据 */
+        // openDB('stuDB', 1).then(db => {
+        //     return deleteData(db, 'stu', 9)
+        // }).then(res => {
+        //     console.log('delete-data', res)
+        // })
+
+        /** 测试修改数据 */
+        openDB('stuDB', 1).then(db => {
+            return cursorDelete(db, 'stu', 'stuAge', 18)
+        }).then(res => {
+            console.log('delete-index&&cursor-data', res)
+        })
+    </script>
+</body>
+</html>

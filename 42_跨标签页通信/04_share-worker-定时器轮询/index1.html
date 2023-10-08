@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="content">
+    <button id="btn">发送数据</button>
+    <script>
+        const content = document.querySelector('#content')
+        const button = document.querySelector('#btn')
+
+        const worker = new SharedWorker('work.js')
+
+        btn.onclick = function() {
+            worker.port.postMessage(content.value)  // 发出的消息会在 work.js 中进行存储
+        }
+    </script>
+</body>
+</html>
