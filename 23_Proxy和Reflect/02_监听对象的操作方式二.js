@@ -16,6 +16,7 @@ const objProxy = new Proxy(obj, {
         target[key] = value
     }
 })
+console.log('objProxy', objProxy)
 
 console.log(objProxy.name)
 console.log(objProxy.age)
@@ -25,3 +26,4 @@ objProxy.age = 20
 
 console.log('obj.name', obj.name)
 console.log('obj.age', obj.age)
+console.log('objProxy', objProxy)

@@ -4,7 +4,7 @@ function foo(arg1, arg2) {
 
 const fooProxy = new Proxy(foo, {
     apply: function(target, thisArg, argArray) {
-        console.log('对 foo 函数进行了 apply 调用。')
+        console.log('对 foo 函数进行了 apply 调用。', this)
         return target.apply(thisArg, argArray)
     },
     construct: function(target, argArray, newTarget) {

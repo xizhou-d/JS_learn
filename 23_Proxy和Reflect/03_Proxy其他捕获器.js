@@ -35,4 +35,5 @@ const objProxy = new Proxy(obj, {
 // delete 操作
 // delete objProxy.name
 // console.log(obj, objProxy)
+console.log(objProxy.name)
 

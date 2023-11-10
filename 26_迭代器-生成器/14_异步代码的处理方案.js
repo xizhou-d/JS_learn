@@ -9,7 +9,7 @@ function requestUrl(url,) {
 
 
 // 需求：
-// 1> url:ahy-->res: why
+// 1> url:why-->res: why
 // 2> url: res + "aaa" -> res: whyaaa
 // 3> res + "bbb" => res: whyaaabbb
 
