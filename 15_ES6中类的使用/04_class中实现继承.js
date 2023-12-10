@@ -27,6 +27,7 @@ class Person {
 
 class Student extends Person {
     constructor(name, age, sno) {
+        // super 继承父类里面的实例属性
         super(name, age)
         this.sno = sno
     }

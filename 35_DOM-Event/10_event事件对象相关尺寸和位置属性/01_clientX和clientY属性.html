@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 200px;
+            height: 200px;
+            border: 50px solid black;
+            background-color: green;
+            padding: 10px;
+            margin: 20px;
+            overflow: auto;
+            /* box-sizing: border-box; */
+            box-sizing: content-box;
+        }
+    </style>
+</head>
+<body>
+    <!-- 这对属性是当事件发生时,鼠标点击位置相对于浏览器(可视区)的坐标,即浏览器左上角坐标的(0,0),该属性以浏览器左上角坐标为原点，计算鼠标点击位置距离其左上角的位置,
+        不管浏览器窗口大小如何变化，都不会影响点击位置的坐标。
+    --> 
+    <div class="container"></div>
+    <script>
+        const el = document.querySelector('.container')
+
+        el.onclick = function(e) {
+            console.log('e.clientX', e.clientX)
+            console.log('e.clientY', e.clientY)
+        }
+    </script>
+</body>
+</html>

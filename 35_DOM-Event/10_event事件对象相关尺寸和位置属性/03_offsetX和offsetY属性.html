@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 200px;
+            height: 200px;
+            border: 50px solid black;
+            background-color: green;
+            padding: 10px;
+            margin: 20px;
+            overflow: auto;
+            box-sizing: border-box;
+            /* box-sizing: content-box; */
+        }
+    </style>
+</head>
+<body>
+    <!-- offsetX 和 offsetY 这一对属性是指当事件发生时,鼠标点击位置相对于该事件源的位置,即点击该 DOM 元素,以该 DOM 左上角为原点来讯算鼠标点击位置的坐标。 -->
+    <!-- ❗️ 如果点击的位置在边框上面，那么 offsetX 和 offsetY 是负值，只有点击区域在 padding 和 content 上才是正值 -->
+    <div class="container"></div>
+    <script>
+        const el = document.querySelector('.container')
+
+        el.onclick = function(e) {
+            console.log('e', e)
+            console.log('e.offsetX', e.offsetX)
+            console.log('e.offsetY', e.offsetY)
+        }
+    </script>
+</body>
+</html>

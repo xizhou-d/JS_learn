@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container1 {
+            width: 200px;
+            height: 200px;
+            border: 5px solid black;
+            background-color: skyblue;
+            padding: 10px;
+            margin: 20px;
+            overflow: auto;
+            /* box-sizing: border-box; */
+            box-sizing: content-box;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1. scrollTop 和 scrollLeft 这两个属性是可读写的
+        2. 指的是当元素其中的内容超出其宽高的时候，元素被卷起的高度和宽度
+        3. scrollTop = scrollHeight - (contentWidth + padding)
+     -->
+    <div class="container1">
+        The deadline for purchasing a Mega Millions ticket varies by state so don't wait until the last minute. It can be 15 minutes to an hour or more before the actual drawing. For some third-party lottery apps, the deadline can be closer to two hours before the drawing. For example, Jackpocket in New Jersey has a deadline of 9:15 p.m. for the 11 p.m. ET drawing.
+    </div>
+    <script>
+        console.log('--------------- 内容超出 ---------------')
+        const el1 = document.querySelector('.container1')
+        console.log('scrollHeight1', el1.scrollHeight)
+
+        el1.onscroll = function() {
+            const scrollTop1 = el1.scrollTop
+            const scrollLeft1 = el1.scrollLeft
+            console.log('scrollTop1', scrollTop1)
+            console.log('scrollLeft1', scrollLeft1)
+        }
+    </script>
+</body>
+</html>

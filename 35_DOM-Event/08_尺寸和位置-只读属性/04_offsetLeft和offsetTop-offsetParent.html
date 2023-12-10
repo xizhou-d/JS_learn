@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            1. 首先需要介绍一下 offsetParent 属性，该属性是获取当前元素的离自己最近的并且定了位的祖先元素，该祖先元素就是当前元素的 offsetParent。
+            2. 如果从该元素向上寻找,找不到这样一个祖先元素,那么当前元素的 offsetParent 就是 body 元素。
+            3. offsetLeft 和 offsetTop 指的是当前元素,相对于其 offsetparent 左边距离和上边距离，即当前元素的 border 到包含它的 offsetParent 的 border 的距离。
+            4. 不会包含当前元素的 border 和 offsetParent 的 border
+        */
+        .container {
+            width: 200px;
+            height: 200px;
+            border: 5px solid black;
+            background-color: skyblue;
+            padding: 10px;
+            margin: 20px;
+            overflow: auto;
+            /* box-sizing: border-box; */
+            /* box-sizing: content-box; */
+            position: relative;
+        }
+        .item {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            border: 5px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item"></div>
+    </div>
+    <script>
+        const el = document.querySelector('.item')
+
+        const offsetTop = el.offsetTop
+        const offsetLeft = el.offsetLeft
+        const offsetParent = el.offsetParent
+        console.log('offsetTop', offsetTop)
+        console.log('offsetLeft', offsetLeft)
+        console.log('offsetParent', offsetParent)
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container, .container1 {
+            width: 200px;
+            height: 200px;
+            border: 5px solid black;
+            background-color: skyblue;
+            padding: 10px;
+            margin: 20px;
+            overflow: auto;
+            /* box-sizing: border-box; */
+            /* box-sizing: content-box; */
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1. scrollHeight 和 scrollWidth 这两个属性指的是当元素内部的内容超出其宽度和高度的时候，元素内部内容的实际宽度和高度
+        2. 如果当前元素的内容没有超过其高度和宽度，那么返回的就是元素的可视部分宽度和高度，即和 clientWidth 和 clientHeight 属性值相同
+     -->
+    <div class="container"></div>
+    <div class="container1">
+        The deadline for purchasing a Mega Millions ticket varies by state so don't wait until the last minute. It can be 15 minutes to an hour or more before the actual drawing. For some third-party lottery apps, the deadline can be closer to two hours before the drawing. For example, Jackpocket in New Jersey has a deadline of 9:15 p.m. for the 11 p.m. ET drawing.
+    </div>
+    <script>
+        console.log('--------------- 内容没有超出 ---------------')
+        const el = document.querySelector('.container')
+
+        const scrollWidth = el.scrollWidth
+        const scrollHeight = el.scrollHeight
+        const clientHeight = el.clientHeight
+        const clientWidth = el.clientWidth
+        console.log('scrollWidth', scrollWidth)
+        console.log('scrollHeight', scrollHeight)
+        console.log('clientHeight', clientHeight)
+        console.log('clientWidth', clientWidth)
+
+        console.log('--------------- 内容超出 ---------------')
+        const el1 = document.querySelector('.container1')
+
+        const scrollWidth1 = el1.scrollWidth
+        const scrollHeight1 = el1.scrollHeight
+        const clientHeight1 = el1.clientHeight
+        const clientWidth1 = el1.clientWidth
+        console.log('scrollWidth1', scrollWidth1)
+        console.log('scrollHeight1', scrollHeight1)
+        console.log('clientHeight1', clientHeight1)
+        console.log('clientWidth1', clientWidth1)
+    </script>
+</body>
+</html>
