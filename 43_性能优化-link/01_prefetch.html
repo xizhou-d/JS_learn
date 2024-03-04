@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.5/vue.global.js">
+</head>
+<body>
+    <button>加载js</button>
+    <script type="module">
+        const btn = document.querySelector('button')
+        const loadScript = (src) => {
+            const script = document.createElement('script')
+            script.src = src
+            document.body.appendChild(script)
+
+            script.onload = function() {
+                console.log('js 加载完成: ', Vue)
+            }
+        }
+
+        btn.onclick = () => {
+            loadScript('https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.5/vue.global.js')
+        }
+
+        // 因为是 prefetch 在没有点击按钮获取 js 文件的时候还在磁盘缓存着，只有点击了按钮之后才会从磁盘中取出来，并且执行
+        console.log('vue', vue)
+    </script>
+</body>
+</html>

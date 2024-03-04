@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .drag {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            position: absolute;
+        }
+        .dragTarget {
+            width: 600px;
+            height: 600px;
+            position: absolute;
+            background-color: springgreen;
+            border: 1px solid;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="drag" draggable="true"></div>
+    <div class="dragTarget"></div>
+    <!-- 
+        拖拽的生命周期，拖拽的组成(被拖拽的元素)
+        1. 拖拽开始，拖拽进行中，拖拽结束
+        2. 被拖拽的物体，目标区域(目标元素)
+        3. 按下物体的瞬间是不会触发事件的，稍微一动一点就会触发事件
+     -->
+    <script>
+        // 1. 被拖拽的元素
+        // 2. 所有的标签元素，当拖拽周期结束时，默认事件是回到原处
+        const dragEl = document.getElementsByClassName('drag')[0]
+        
+        dragEl.ondragstart = function(e) {
+            console.log('ondragstart', e)
+        }
+        // dragEl.ondrag = function(e) {
+        //     console.log('ondrag', e)
+        // }
+        dragEl.ondragend = function(e) {
+            console.log('ondragend', e)
+        }
+
+        // 2. 拖拽目标区域（目标元素）
+        const dragTargetEl = document.querySelector('.dragTarget')
+        // ondragenter 事件触发时机：不是被拖拽的元素图形进入就触发，而是在鼠标进入的时候才会触发
+        dragTargetEl.ondragenter = function(e) {
+            console.log('ondragenter', e)
+        }
+
+        dragTargetEl.ondragover = function(e) {
+            // console.log('ondragover', e)
+            e.preventDefault()
+        }
+
+        dragTargetEl.ondragleave = function(e) {
+            console.log('ondragleave', e)
+        }
+
+        dragTargetEl.ondrop = function(e) {
+            // 默认情况下，ondrop 事件不会执行，除非在 ondragover 中执行 e.preventDefault()
+            // 为什么要在 ondragover 中执行 e.preventDefault() 中执行才会触发 ondrop 事件？
+            // 解释：事件是由行为触发的，一个行为是可以触发多个事件的，拖动放开鼠标的时候触发的两个事件 ondragover ondrop, 但是 ondragover 先执行
+            //      ondragover  ->  回到原处(默认)
+            //                  ->  ondrop
+            // 以上执行相当于一个 if else 结构，因此要想触发 ondrop, 只能阻止默认回到原处的事件
+            console.log('ondrop', e)
+        }
+    </script>
+</body>
+</html>

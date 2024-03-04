@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box1 {
+            position: absolute;
+            width: 150px;
+            height: auto;
+            border: 1px solid;
+            padding-bottom: 10px;
+        }
+
+        .box2 {
+            position: absolute;
+            left: 300px;
+            width: 150px;
+            height: auto;
+            border: 1px solid;
+            padding-bottom: 10px;
+        }
+
+        li {
+            position: relative;
+            left: 10px;
+            width: 100px;
+            height: 30px;
+            background-color: #abcdef;
+            margin: 10px auto 0px auto;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+    <div class="box2"></div>
+
+    <script>
+        const liLists = document.getElementsByTagName('li')
+        let dragDom = null;
+        for (let i = 0; i < liLists.length; i++) {
+            liLists[i].setAttribute('draggable', true)
+
+            liLists[i].ondragstart = function(e) {
+                console.log('ondragstart', e.target)
+                dragDom = e.target
+            }
+        }
+
+        const box2 = document.querySelector('.box2')
+        box2.ondragover = function(e) {
+            e.preventDefault()
+        }
+        box2.ondrop = function(e) {
+            console.log('ondrop', e)
+            box2.appendChild(dragDom)
+            dragDom = null
+        }
+
+        const box1 = document.querySelector('.box1')
+        box1.ondragover = function(e) {
+            e.preventDefault()
+        }
+        box1.ondrop = function(e) {
+            console.log('ondrop', e)
+            box1.appendChild(dragDom)
+            dragDom = null
+        }
+    </script>
+</body>
+</html>

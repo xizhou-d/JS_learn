@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="drag" draggable="true"></div>
+    <!-- 
+        a 标签和 img 标签默认就可以拖拽
+     -->
+    <a href="#">a 标签</a>
+    <img src="https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2022%2F0426%2Fe434990bj00rax83m0019c000hs00e4m.jpg&thumbnail=660x2147483647&quality=80&type=jpg" alt="">
+    <!-- 
+        拖拽的生命周期，拖拽的组成
+        1. 拖拽开始，拖拽进行中，拖拽结束
+        2. 被拖拽的物体，目标区域(目标元素)
+        3. 按下物体的瞬间是不会触发事件的，稍微一动一点就会触发事件
+     -->
+    <script>
+        const dragEl = document.getElementsByClassName('drag')[0]
+        let beginX = 0
+        let beginY = 0
+        
+        dragEl.ondragstart = function(e) {
+            console.log('e', e)
+            beginX = e.clientX
+            beginY = e.clientY
+        }
+        // dragEl.ondrag = function(e) {
+        //     console.log('e', e)
+        // }
+        dragEl.ondragend = function(e) {
+            console.log('e', e)
+            let x = e.clientX - beginX
+            let y = e.clientY - beginY
+
+            dragEl.style.left = dragEl.offsetLeft + x + 'px'
+            dragEl.style.top = dragEl.offsetTop + y + 'px'
+        }
+    </script>
+</body>
+</html>

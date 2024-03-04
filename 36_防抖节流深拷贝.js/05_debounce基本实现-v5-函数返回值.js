@@ -23,6 +23,7 @@ function debounce(fn, delay, immediate = false) {
         }
     }
 
+
     _debounce.cancel = function() {
         if (timer) clearTimeout(timer)
         timer = null
