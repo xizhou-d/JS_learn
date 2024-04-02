@@ -23,8 +23,8 @@ const generator = foo(5)
 
 console.log(generator.next())
 
-console.log(generator.next(1))
+// console.log(generator.next(1))
 
-console.log(generator.next(100))
+// console.log(generator.next(100))
 
 // 生成器是可以抛出异常的

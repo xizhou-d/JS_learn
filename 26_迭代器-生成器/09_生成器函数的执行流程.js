@@ -25,5 +25,5 @@ function* foo() {
 const generator = foo()
 console.log('返回值: ', generator.next())
 console.log('返回值: ', generator.next())
-console.log('返回值: ', generator.next())
-console.log('返回值: ', generator.next())
+// console.log('返回值: ', generator.next())
+// console.log('返回值: ', generator.next())
