@@ -8,8 +8,8 @@ inputEl.onchange = function() {
 
     fileReader.onload = function(e) {
         console.log('e.target.result', e.target.result)
-        const previewa = document.querySelector('img')
-        console.log(previewa === preview)
-        previewa.src = e.target.result
+        const preview = document.querySelector('img')
+        console.log(preview === preview)
+        preview.src = e.target.result
     }
 }

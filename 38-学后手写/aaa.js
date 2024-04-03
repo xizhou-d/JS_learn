@@ -1,1 +1,0 @@
-const xhr = new XMLHttpRequest()

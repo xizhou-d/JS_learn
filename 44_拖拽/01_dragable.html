@@ -31,7 +31,7 @@
         let beginY = 0
         
         dragEl.ondragstart = function(e) {
-            console.log('e', e)
+            console.log('e-start', dragEl.offsetLeft)
             beginX = e.clientX
             beginY = e.clientY
         }
@@ -39,12 +39,16 @@
         //     console.log('e', e)
         // }
         dragEl.ondragend = function(e) {
-            console.log('e', e)
+            console.log('e-end', dragEl.offsetLeft)
             let x = e.clientX - beginX
             let y = e.clientY - beginY
 
+            // 这里用 offsetLeft，这个属性的值在 ondragstart 和 ondragend 是一样的
             dragEl.style.left = dragEl.offsetLeft + x + 'px'
             dragEl.style.top = dragEl.offsetTop + y + 'px'
+
+            console.log('dragEl.clientX', e.clientX)
+            console.log('dragEl.style.left', dragEl.style.left)
         }
     </script>
 </body>
