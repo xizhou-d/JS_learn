@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=f, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>index 0</li>
+        <li>index 1</li>
+        <li>index 2</li>
+        <li>index 3</li>
+        <li>index 4</li>
+        <li>index 5</li>
+        <li>index 6</li>
+        <li>index 7</li>
+    </ul>
+
+    <script>
+        
+        const ulEl = document.querySelector('ul')
+
+        ulEl.addEventListener('click', (e) => {
+            console.log('e.target', typeof e.target)
+            // console.log('e.currentTarget', e.currentTarget)
+            const { target } = e
+            if (target.tagName.toLowerCase() === 'li') {
+                // document.querySelectorAll 返回的不是一个数组，而是一个类数组对象
+                const liLists = document.querySelectorAll('li')
+                // 因此，不能使用 liLists.indexOf(target)
+                let index = Array.prototype.indexOf.call(liLists, target)
+                alert(index) 
+            }
+            
+        })
+    </script>
+</body>
+</html>

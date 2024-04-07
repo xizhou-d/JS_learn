@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="status"></div>
+    <div id="log"></div>
+
+    <script>
+        // navigator.online
+        window.addEventListener('load', function() {
+            const statusEl = document.querySelector('#status')
+            const logEl = document.querySelector('#log')
+
+            function updateOnlineStatus(e) {
+                statusEl.innerHtml = navigator.onLine ? 'online' : 'offline'
+                logEl.insertAdjacentHTML('beforeend', `<div>Event: ${e.type}; status: ${statusEl.innerHTML}</div>`)
+            }
+
+            window.addEventListener('online', updateOnlineStatus)
+            window.addEventListener('offline', updateOnlineStatus)
+        })
+
+        // navigator.connection
+        const { connection } = navigator
+        let type = connection.effectiveType
+        console.log('type', type)
+        
+        function updateConnectionStatus() {
+            console.log(`网络从 ${type} 切换到了 ${connection.effectiveType}`)
+            type = connection.effectiveType
+        }
+
+        connection.addEventListener('change', updateConnectionStatus)
+    </script>
+</body>
+</html>

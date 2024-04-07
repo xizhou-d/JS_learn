@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 200, 200, 0.4);
+        }
+        #parent {
+            width: 400px;
+            height: 400px;
+        }
+        #normal {
+            width: 200px;
+            height: 200px;
+        }
+        #son {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent" class="flex-center">
+        parent
+        <div id="normal" class="flex-center">
+            normal
+            <div id="son" class="flex-center">
+                son
+                <a href="http://www.baidu.com" id="a_baidu">click me.</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const parentEl = document.getElementById('parent')
+        const normalEl = document.getElementById('normal')
+        const sonEl = document.getElementById('son')
+        const a_baiduEl = document.getElementById('a_baidu')
+
+        // 冒泡(addEventListener 第三个参数是控制冒泡还是捕获，默认是 false)
+        window.addEventListener('click', (e) => {
+            console.log('window 冒泡')
+        }, false)
+        parentEl.addEventListener('click', (e) => {
+            console.log('parent 冒泡')
+        }, false)
+        normalEl.addEventListener('click', (e) => {
+            // ❗️ 阻止冒泡：e.stopPropagation()
+            // e.stopPropagation()
+            console.log('normal 冒泡')
+        }, false)
+        sonEl.addEventListener('click', (e) => {
+            console.log('son 冒泡')
+        }, false)
+        a_baiduEl.addEventListener('click', (e) => {
+            console.log('a_baiduEl 冒泡')
+        }, false)
+
+        // 捕获
+        window.addEventListener('click', (e) => {
+            console.log('window 捕获')
+        }, true)
+        parentEl.addEventListener('click', (e) => {
+            console.log('parent 捕获')
+        }, true)
+        normalEl.addEventListener('click', (e) => {
+            console.log('normal 捕获')
+        }, true)
+        sonEl.addEventListener('click', (e) => {
+            console.log('son 捕获')
+        }, true)
+        a_baiduEl.addEventListener('click', (e) => {
+            // ❗️ 阻止默认事件
+            e.preventDefault()
+            console.log('a_baiduEl 捕获')
+        }, true)
+    </script>
+</body>
+</html>
