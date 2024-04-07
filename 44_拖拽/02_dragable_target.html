@@ -48,7 +48,7 @@
         const dragTargetEl = document.querySelector('.dragTarget')
         // ondragenter 事件触发时机：不是被拖拽的元素图形进入就触发，而是在鼠标进入的时候才会触发
         dragTargetEl.ondragenter = function(e) {
-            console.log('ondragenter', e)
+            console.log('ondragenter', e.target)
         }
 
         dragTargetEl.ondragover = function(e) {
