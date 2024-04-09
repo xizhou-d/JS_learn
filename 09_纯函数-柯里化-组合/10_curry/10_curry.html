@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border: 2px solid;
+            padding: 20px;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">第一个 DIV</div>
+    <div>dklsslfkslk</div>
+    <h1>slkdflkdf</h1>
+    <script src="./10_curry.js"></script>
+    <script>
+        function createElement(c, name, props, styles, content) {
+            const ele = document.createElement(name)
+            c.appendChild(ele)
+            for (let prop in props) {
+                ele[prop] = props[prop]
+            }
+
+            for (let prop in styles) {
+                ele.style[prop] = styles[prop]
+            }
+
+            if (content) {
+                ele.innerHTML = content
+            }
+        }
+
+        const container = document.querySelector('.container')
+
+        const newCreate = curry(createElement, container, 'div', {}, {
+            height: '200px',
+            background: 'blue',
+            margin: '30px',
+            color: 'white'
+        })
+        newCreate('aaaaa')
+        newCreate('bbbbb')
+        newCreate('ccccc')
+        newCreate('ddddd')
+    </script>
+</body>
+</html>

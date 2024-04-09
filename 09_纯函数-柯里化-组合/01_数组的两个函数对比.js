@@ -14,3 +14,12 @@ var names = ["abc", "cba", "nba", "dna"]
 var newNames2 = names.splice(2)
 console.log(newNames2)
 console.log(names)
+
+
+
+
+function get(a, b, c) {
+    console.log('arguments', arguments)
+    console.log([...arguments])
+}
+get(1, 2 ,4)

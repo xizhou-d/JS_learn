@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function pipe() {
+            const args = Array.from(arguments)
+            return function(val) {
+                return args.reduce((result, func) => {
+                    return func(result)
+                }, val)
+                // for (let i = 0; i < args.length; i++) {
+                //     const func = args[i]
+                //     val = func(val)
+                //     console.log('val', val)
+                // }
+
+                // return val
+            }
+        }
+
+        function curry(func) {
+            const args = Array.prototype.slice.call(arguments, 1)
+            return function () {
+                // 得到当前调用的函数的参数
+                const curArgs = Array.from(arguments)
+                const totalArgs = args.concat(curArgs)
+                if (totalArgs.length >= func.length) {
+                    // 参数数量够了
+                    console.log(9999999, totalArgs)
+                    return func.apply(null, totalArgs)
+                } else {
+                    // 参数数量不够
+                    totalArgs.unshift(func)
+                    return curry(...totalArgs)
+                }
+            }
+        }
+    </script>
+    <script>
+        // 函数管道: 将多个单参函数组合起来，形成一个新的函数；这些函数中，前一个函数的输出，是后一个函数的输入
+        let str = 'mY fIrST naMe.'
+        // 将 字符串中每一个单词首字母大写
+        function everyFirstLetterUp(str) {
+            return str.replace(/\b(\w)(\w+)\b/g, ($, $1, $2) => {
+                return $1.toUpperCase() + $2
+            })
+        }
+
+        // 将除了第一个字母以外的其他字符小写
+        function otherLetterLower(str) {
+            return str.replace(/\b(\w)(\w+)\b/g, ($, $1, $2) => {
+                return $1 + $2.toLowerCase()
+            })
+        }
+
+        // 去掉字符串中所有的空白字符
+        function removeEmpty(str) {
+            return str.replace(/\s+/g, '')
+        }
+
+        // 字符串第一个字符变成大写
+        function firstLetterLower(str) {
+            return str.replace(/\w/, ($) => {
+                return $.toLowerCase()
+            })
+        }
+
+        // 截取字符串
+        function curString(number, str) {
+            return str.substring(0, number)
+        }
+
+        // 将一个字符串变为小驼峰命名法
+        // str = everyFirstLetterUp(str)
+        // str = firstLetterLower(str)
+        // str = otherLetterLower(str)
+        // str = removeEmpty(str)
+
+        // console.log('str', str)
+
+
+        // 组合函数，生成一个新的函数可以通用
+        const smallCamel = pipe(
+            everyFirstLetterUp,
+            firstLetterLower,
+            otherLetterLower,
+            removeEmpty,
+            curry(curString, 10)
+        )
+        console.log(smallCamel(str))
+    </script>
+</body>
+</html>
