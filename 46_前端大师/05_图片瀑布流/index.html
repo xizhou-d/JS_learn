@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border: 1px solid #ccc;
+            width: 90%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <script src="./plugins/debounce.js"></script>
+    <script src="./plugins/waterFall.js"></script>
+    <script>
+        const srcs = []
+        for (let i = 1; i <= 31; i++) {
+            srcs.push(`./img/${i}.jpg`)
+        }
+        myPlugins.createWaterFall({
+            minHGap: 10,
+            minVGap: 15,
+            imgSrcs: srcs, //数组存放图片的路径
+            imgWidth: 220,
+            container: document.querySelector('.container')
+        })
+    </script>
+</body>
+</html>
