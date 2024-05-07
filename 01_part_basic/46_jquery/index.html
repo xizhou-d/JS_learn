@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        console.log('jquery', jQuery)
+        console.log('$', $)
+
+        $(document).ready(function() {
+            var box = document.getElementsByClassName('box')
+            console.log('box', box)
+        })
+
+        $().ready(function() {
+            var box = document.getElementsByClassName('box')
+            console.log('box', box)
+        })
+
+        $(function() {
+            var box = document.getElementsByClassName('box')
+            console.log('box', box)
+        })
+
+        // jquery ready 事件和 window.onload 事件的区别
+        // ready 相当于 DOMContentLoaded 事件，DOM 元素解析完成了之后执行，但是会比 document.DOMContentLoaded 稍微晚一点；onload 事件需要等页面 DOM 解析完成，并且所有的资源全部加载完成之后才会触发。 
+        $(document).ready(function() {
+            console.log('ready 事件被触发。')
+        })
+
+        window.onload = function() {
+            console.log('onload 事件被触发。')
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOMContentLoaded 事件执行了。')
+        })
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+    <button class="btn">按钮</button>
+    <!-- <img src="http://www.google.com/1.img" alt=""> -->
+
+    <script>
+        // 原生 JS 写法
+        // const btn = document.getElementsByClassName('btn')[0]
+        // console.log('btn', btn)
+        // btn.onclick = function() {
+        //     console.log('11111')
+        //     const div = document.createElement('div')
+        //     div.style.width = '100px'
+        //     div.style.height = '100px'
+        //     div.style.backgroundColor = 'green'
+
+        //     document.body.appendChild(div)
+        // }
+
+        // jq 写法
+        $('.btn').click(function() {
+            $('<div></div>').css({
+                width: '100px',
+                height: '100px',
+                background: 'green'
+            }).appendTo('body')
+        })
+    </script>
+</body>
+</html>
