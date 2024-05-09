@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <ul id="ulId" class="ulClass">
+        <li>red</li>
+        <li>green</li>
+        <li name="blue">blue</li>
+    </ul>
+
+    <script>
+        // 强大的选择器
+        var li = $('ul li:nth-child(1)')
+        var li = $('#ulId li:first-child')
+        var li = $('.ulClass li:first-child + li')
+        var li = $('li[name="blue"]')
+        console.log('li', li)
+        li.css('background', 'green')
+    </script>
+</body>
+</html>

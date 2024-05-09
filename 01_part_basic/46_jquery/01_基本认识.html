@@ -43,6 +43,12 @@
     <button class="btn">按钮</button>
     <!-- <img src="http://www.google.com/1.img" alt=""> -->
 
+    <ul id="ulId" class="ulClass">
+        <li>red</li>
+        <li>green</li>
+        <li>blue</li>
+    </ul>
+
     <script>
         // 原生 JS 写法
         // const btn = document.getElementsByClassName('btn')[0]
@@ -65,6 +71,10 @@
                 background: 'green'
             }).appendTo('body')
         })
+
+        // 强大的选择器
+        var li = $('ul li:nth-child(1)')
+        console.log('li', li)
     </script>
 </body>
 </html>
