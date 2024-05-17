@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <div>
+        <a href="#" class="link"> link 01</a>
+        <a href="#"> link 02</a>
+        <a href="#"> link 03</a>
+        <a href="#"> link 04</a>
+
+        <p>
+            <a href="#">link 05</a>
+        </p>
+    </div>
+
+    <script>
+        $('div a').css('color', 'greenyellow')
+        // > 这个符号只能选择子元素，不能选择孙子元素
+        $('div>a').css('color', 'skyblue')
+        $('div a.link + a').css('color', 'blue')
+        // ～ 可以选择到后边所有的兄弟节点
+        $('div a ~ a').css('color', 'purple')
+    </script>
+</body>
+</html> 

@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        li {
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h2>ul id = list1</h2>
+    <ul id="list1">
+        <li>red</li>
+        <li class="red">red</li>
+        <li>red</li>
+        <li>red</li>
+    </ul>
+
+    <h2>ul id = list2</h2>
+    <ul id="list2">
+        <li>red</li>
+        <li class="red">red</li>
+        <li>red</li>
+        <li>red</li>
+    </ul>
+    <p class="red">red</p>
+
+    <script>
+        // id 选择器
+        $('ul').css('background', 'green')
+        // class 选择器
+        $('.red').css('background', 'grey')
+        // 标签选择器
+        $('li').css('border', '2px solid pink')
+        // 通配符选择器
+        // $('*').css('border', '2px solid yellow')
+        $('li, p').css('font-size', '20px')
+    </script>
+</body>
+</html> 

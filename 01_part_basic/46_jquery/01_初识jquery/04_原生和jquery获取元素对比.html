@@ -6,12 +6,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-    <h1>h1 label</和>
+    <h1>h1 label</h1>
+    <h1>h1 label</h1>
+    <h1>h1 label</h1>
+    <h1>h1 label</h1>
+
 
     <script>
         // 原生和jquery获取 DOM 的对比
         var h1 = document.querySelector('h1')
         var $h1 = $('h1')
+        console.log('$h1', $h1, typeof $h1)
         console.log(h1 === $h1)
 
         // 设置样式
