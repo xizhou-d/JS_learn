@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <!-- 表单过滤选择器 -->
+    <input type="button" value="按钮1">
+    <button>按钮2</button>
+    <div id="sex">
+        <input type="checkbox"> 男
+        <input type="checkbox"> 女
+    </div>
+    <div>
+        <input type="checkbox" checked> 男
+        <input type="checkbox"> 女
+    </div>
+    <script>
+        // $(':button').css('border', '2px solid green')   // 只要是 button的就能选中，包括 input button
+
+        // $('#sex input:checkbox').wrap('<span></span>').parent().css('border', '5px solid yellow')
+
+        $(':checked').wrap('<span></span>').parent().css('border', '5px solid red')
+    </script>
+</body>
+</html> 

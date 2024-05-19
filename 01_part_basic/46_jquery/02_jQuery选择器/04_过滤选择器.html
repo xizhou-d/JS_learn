@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <ol id="olColor">
+        <li>color</li>
+        <li>color</li>
+        <li>color</li>
+        <li lang="en">color</li>
+        <li>color</li>
+        <li id="tar">color</li>
+        <li>color</li>
+        <li>color</li>
+    </ol>
+    <h1>h1</h1>
+    <h2>h2</h2>
+    <h3>h3</h3>
+    <script>
+        // 基础过滤器
+        // $('#olColor li:eq(1)').css('background', 'hotpink')     // 索引选择，从 0 开始时第一个
+        // $('#olColor li:gt(1)').css('background', 'green')       // 索引值大于 1 的
+        // $('#olColor li:lt(3)').css('background', 'yellow')      // 索引值小于 3 的
+        // $('#olColor li:not(#olColor li:eq(2))').css('background', 'blue')   // 排除 not 后边跟的元素
+
+        // $('#olColor li:even').css('background', 'skyblue')      // 偶数
+        // $('#olColor li:odd').css('background', 'yellow')        // 奇数
+        // $('#olColor li:first').css('border', '5px solid green') // 第一个
+        // $('#olColor li:last').css('border', '5px solid blue')   // 最后一个
+
+        $('#olColor li:lang(en)').css('border', '5px solid teal');  // 貌似不生效
+        // $('#olColor li:target(tar)').css('border', '5px solid yellow')      // 锚点
+
+        $(':root').css('border', '2px solid blue')      // 根节点 html
+        $(':header').css('color', 'greenyellow')        // 选中所有的 h 标签
+    </script>
+</body>
+</html> 

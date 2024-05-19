@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="paragraph">
+        <p>段落</p>
+        <p>段落</p>
+        <span>段落</span>
+        <p>段落</p>
+        <span>段落</span>
+        <p>段落</p>
+        <span>段落</span>
+    </div>
+    <div id="only">
+        <p>唯一的一个子元素</p>
+    </div>
+    <div id="only-two">
+        <span>span</span>
+        <p>p</p>
+    </div>
+    <script>
+        // 子元素过滤器
+        // $('#paragraph p:first-child').css('color', 'green')     // 强调：:first-child 选择器，第一个自元素必须是冒号之前的元素，如果 id 为 paragraph 的 div 第一个子元素是非 p 标签的元素，就不会生效
+        // $('#paragraph span:first-of-type').css('color', 'greenyellow')       // :first-of-type 跟 上面的不同，没有限制，只要是第一个 span 元素就行
+
+        // $('#paragraph span:last-child').css('color', 'pink')        // 和  :first-child 有同样的限制，最后一个自元素必须是 冒号 之前的
+        // $('#paragraph p:last-of-type').css('background', 'yellow')
+
+        // $('#paragraph p:nth-child(2)').css('color', 'hotpink')      // nth-child是从 1 开始的，严格：第二个标签必须是 p，否则不会生效
+        // $('#paragraph span:nth-of-type(2)').css('color', 'blue')    // :nth-of-type 从 0 开始的
+
+        $('#only p:only-child').css('background', 'green')          // 比较严格，#only 必须只有一个为 p 的子元素
+        $('#only-two span:only-of-type').css('font-size', '30px')   // 不严格，只要子元素只有一个 span 就可以
+    </script>
+</body>
+</html> 

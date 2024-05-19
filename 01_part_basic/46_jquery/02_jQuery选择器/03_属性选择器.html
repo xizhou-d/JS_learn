@@ -8,11 +8,28 @@
     </style>
 </head>
 <body>
-    <ul>
-        
+    <ul id="ulColor">
+        <li class="red">class = red</li>
+        <li title="blue">title = blue</li>
+        <li title="css-1">css-1</li>
+        <li id="color1-green">id = "color1-green"</li>
+        <li id="red-1color">id="red-1color"</li>
+        <li lang="encnhk">lang="encnhk"</li>
+        <li lang="en cn">lang="en cn"</li>
+        <li class="c1" name="kaiven">class="c1" name="kaiven"</li>
     </ul>
-
     <script>
+        // $('#ulColor li[class]').css('color', 'pink')
+        // $('#ulColor li[title=blue]').css('color', 'blue')
+        // $('#ulColor li[title!=blue]').css('color', 'purple')
+        // $('#ulColor li[title|=css]').css('color', 'skyblue')         // ｜=  表示以属性值 blue 开始的，并且 blue 和后面的部分是用 - 隔开的
+        // $('#ulColor li[id^=color]').css('color', 'green')            // ^=  表示以属性值 color 为开始不需要 - 隔开
+        // $('#ulColor li[id$=color]').css('background', 'hotpink')     // $+  表示以 color 为结尾的，不需要 - 隔开
+
+        $('#ulColor li[lang*=cn]').css('background', 'greenyellow')     // *=  表示属性名中包含 cn 
+        $('#ulColor li[lang~=cn]').css('background', 'yellow')          // ~=  表示属性名中包含 cn, cn 是个单词，用空格隔开
+
+        $('#ulColor li[class=c1][name=kaiven]').css('background', 'teal')
     </script>
 </body>
 </html> 
