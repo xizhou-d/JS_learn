@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .css {
+            border: 2px solid greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="css">
+        <h2></h2>
+        <p></p>
+        <div></div>
+    </div>
+    <script>
+        // 获取 css 样式
+        console.log("$('.css').css('border'): ", $('.css').css('border'))
+        console.log("$('.css').css('height'): ", $('.css').css('height'))
+
+
+        // 设置样式
+        $('.css h2').css('width', '200px').css('height', '100px').css('background', 'blue').text('插入一个内容')
+
+        $('.css h2').css({
+            'line-height': '100px',
+            color: 'greenyellow',
+            fontSize: '24px'
+        })
+
+        $('.css p').css({
+            width: '200px',
+            height: '200px',
+            border: '2px solid #f00',
+            margin: '20px auto',
+            padding: '10px'
+        })
+    </script>
+</body>
+</html>

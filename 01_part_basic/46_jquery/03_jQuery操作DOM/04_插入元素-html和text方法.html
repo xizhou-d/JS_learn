@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="htmlAndText">
+        <h2>html 与 text 方法</h2>
+    </div>
+    <script>
+        // 获取
+        console.log('$("xxx").html()', $('.htmlAndText').html())
+        console.log('$("xxx").text()', $('.htmlAndText').text())
+
+        // 设置
+        $('.htmlAndText').html('<h2>这是 html 方法添加的标题</h2><p>这是 html 方法添加的段落</p>') // 标签中的内容会渲染出来
+        $('.htmlAndText').text('<h2>这是 text 方法添加的标题</h2><p>这是 text 方法添加的段落</p>') // 标签不会被渲染，会被当作字符串显示出来
+    </script>
+</body>
+</html>

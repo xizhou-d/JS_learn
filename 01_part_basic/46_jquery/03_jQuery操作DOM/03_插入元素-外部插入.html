@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="outsideAdd">
+        <h2>在外部插入元素</h2>
+    </div>
+    <script>
+        // after 方法在选中元素的外面插入（同级别 / 兄弟节点），插入到 选中元素的后面
+        // $('.outsideAdd h2').after('<p>after 插入 p 元素</p>')
+
+        // insertAfter 方法
+        // $('<p>insertAfter 方法插入 p 元素</p>').insertAfter('.outsideAdd h2')
+
+
+
+        // 在前边插入
+        // before
+        // $('.outsideAdd h2').before('<p>before 插入 p 元素。</p>')
+        // insertBefore
+        $('<p>insertBefore 插入 p 元素</p>').insertBefore('.outsideAdd h2')
+    </script>
+</body>
+</html>

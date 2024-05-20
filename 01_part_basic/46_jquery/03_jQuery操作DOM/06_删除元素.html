@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="del">
+        <div class="title">标题</div>
+        <ul>
+            <li>red</li>
+            <li>green</li>
+            <li>blue</li>
+        </ul>
+        <div class="end">底部</div>
+    </div>
+    <script>
+        // $('.del .title').remove()
+        // $('div').remove('.title')
+
+        // empty 清空选中元素的子元素
+        $('.del ul').empty()
+
+        // detach 删除节点
+        $('.del .end').click(function() {
+            alert('111111111')
+        })
+        const end = $('.del .end').detach()
+        // const end = $('.del .end').remove()
+
+        setTimeout(() => {
+            $('.del').append(end)
+        }, 2000)
+
+
+        /** 
+         * detach 和 remove 的区别：
+         * 如果删除之前在节点上挂载有事件 => remove 返回的元素会将事件一起删除，重新 append 的时候相当于新的元素什么都没有
+         * detach 删除的时候返回的元素会保留之前挂在的事件
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- 克隆与替换元素 -->
+    <div class="clone">
+        <p>这是一段要被克隆的文字</p>
+        <h2 class="replaceAll">这是一段要主动替换的文字</h2>
+        <div class="name1">yangkun</div>
+        <div class="name2">xizhou</div>
+        <h2 class="replaceWith">这是一段要被动替换的文字</h2>
+    </div>
+    <script>
+        $('.clone').click(function() {
+            alert('22222222222')
+        })
+        // 克隆
+        $('.clone p').clone(false).appendTo('.clone')
+
+        // replaceAll: $(A).replaceAll(B)  用 A 替换 B
+        $('<h3>我是替换的内容，会去替换掉目标</h3>').replaceAll('.clone .replaceAll')
+        $('.clone .name2').replaceAll('.clone .name1')
+
+        // replaceWith
+        $('.clone .replaceWith').replaceWith('<h3>使用该内容，被动替换目标元素</h3>')
+    </script>
+</body>
+</html>

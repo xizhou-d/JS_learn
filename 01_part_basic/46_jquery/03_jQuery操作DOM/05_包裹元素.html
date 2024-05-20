@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <span>red</span>
+        <span>green</span>
+        <span>blue</span>
+    </div>
+    <script>
+        // 给选中的元素外面添加一层标签
+        $('.wrap span').wrap('<li>')    // 给选中的每一个标签外面添加一个包裹的元素
+        $('.wrap li').wrapAll('<ul>')   // 给选中的所有的元素的外面添加一个包裹的元素
+
+        // 给内部添加一个包裹的元素
+        $('.wrap span').wrapInner('<strong>')
+
+        // 接触包裹
+        $('.wrap li').unwrap()          // 删除选中元素外部的包裹元素，会删除 ul 标签
+    </script>
+</body>
+</html>

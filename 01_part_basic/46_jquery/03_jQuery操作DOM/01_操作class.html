@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .active {
+            background-color: #1bce5a;
+        }
+    </style>
+</head>
+<body>
+    <div class="setClass">
+        <ul>
+            <li>red</li>
+            <li class="green blue">red</li>
+            <li class="green">red</li>
+        </ul>
+        <p class="active">点击切换 class</p>
+    </div>
+    <script>
+        $('.setClass li:first').addClass('red') // 添加 class 的时候不能加 .
+        // 携带参数 删除参数对应的 class
+        $('.setClass li:eq(1)').removeClass('green')    
+        // 没有携带参数，删除所有的 class
+        $('.setClass li:eq(1)').removeClass()
+
+        // 检测是否有某个 class
+        console.log($('.setClass li:last').hasClass('green'))
+        console.log($('.setClass li:last').hasClass('orange'))
+
+        // 切换功能
+        $('.setClass p').click(function() {
+            $(this).toggleClass()
+        })
+    </script>
+</body>
+</html>

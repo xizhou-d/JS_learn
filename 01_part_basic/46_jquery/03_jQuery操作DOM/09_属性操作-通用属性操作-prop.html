@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .attr img {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 属性操作：通用属性操作 -->
+    <div class="attr">
+        <img src="images/yangjian.png" yangkun="xizhou" alt="">
+        <!-- <img src="images/shihao.jpeg" alt=""> -->
+        <input type="text" value="这是一个正经的输入框">
+    </div>
+    <script>
+        // ⚠️ 如上 如果存在多张图片，那么只会获取第一张图片的 src
+        console.log("$('.attr img').attr('src')", $('.attr img').attr('src'))   // images/yangjian.png
+
+        // ⚠️ 会把属性添加到所有选中的元素上
+        $('.attr img').attr('title', '这是一张动漫图')
+
+        // 同时设置多个属性
+        $('.attr img').attr({
+            class: 'cartoon',
+            alt: '动漫图片'
+        })
+
+
+        console.log('****************** 以下是 attr 和 prop 的区别 ******************')
+        // prop 和 attr 的区别
+        // 区别 1:
+        console.log("$('.attr img').prop('src')", $('.attr img').prop('src'))   // prop 获取到的是绝对路径   attr 获取到的是相对路径
+
+        // 区别 2:
+        console.log("$('.attr img').attr('yangkun')", $('.attr img').attr('yangkun'))   // 打印：xizhou     attr 可以获取到标签上自定义的属性
+        console.log("$('.attr img').prop('yangkun')", $('.attr img').prop('yangkun'))   // 打印：undefined  prop 获取不到标签上自定义的属性
+
+        // 区别 3: ⚠️ 自定义的属性 prop 除了 id 添加上了，其他的自定义属性都没有添加到标签上 (同时 id 也被添加到了 DOM 对象上)，但是添加到了 DOM 对象上
+        $('.attr img').prop({
+            id: 'cartoon',
+            yangkun: 'dongzhou'
+        })
+        console.log("$('.attr img').prop('id'): ", $('.attr img').prop('id'))
+
+        // 删除属性:
+        $('.attr img').removeAttr('yangkun')
+        $('.attr img').removeProp('id')
+        console.log("$('.attr img').prop('id'): ", $('.attr img').prop('id'))   // ⚠️ id 属性不能被 removeProp 删除，还是可以在 DOM 对象中看到的，但是其他的属性可以删除
+
+        // 验证 prop 被添加到了 DOM 对象上
+        $('.attr img').prop('index', 5)
+        console.log("$('.attr img').prop('index'): ", $('.attr img').prop('index')) // 打印：5
+        $('.attr img').removeProp('index')
+        console.log("$('.attr img').prop('index'): ", $('.attr img').prop('index')) // ⚠️ id 属性不能被 removeProp 删除，还是可以在 DOM 对象中看到的，但是其他的属性可以删除
+
+
+
+        /** 
+         * 总结：
+         * attr 一般用来操作 标签上的属性
+         * prop 用来操作 DOM 对象上的属性 
+        */
+    </script>
+</body>
+</html>

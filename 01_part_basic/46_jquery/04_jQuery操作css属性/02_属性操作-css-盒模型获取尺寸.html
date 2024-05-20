@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .css {
+            border: 2px solid greenyellow;
+        }
+        .css h2 {
+            width: 200px;
+            height: 100px;
+            background: blue;
+            line-height: 100px;
+            color: greenyellow;
+            font-size: 24px;;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="css">
+        <h2>这是 h2 标题</h2>
+        <p></p>
+        <div></div>
+    </div>
+    <script>
+        $('.css p').css({
+            width: '200px',
+            height: '200px',
+            border: '2px solid #f00',
+            margin: '20px auto',
+            padding: '10px'
+        })
+
+        // 获取尺寸
+        console.log('width: ', $('.css p').width())
+        console.log('height: ', $('.css p').height())
+        console.log('innerWidth: ', $('.css p').innerWidth())       // 内容宽度 + padding
+        console.log('innerHeight: ', $('.css p').innerHeight())     // 内容高度 + padding
+        console.log('outerWidth: ', $('.css p').outerHeight())      // 内容宽度 + padding + border
+        console.log('outerHeight: ', $('.css p').outerHeight())     // 内容高度 + padding + border
+    </script>
+</body>
+</html>

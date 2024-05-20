@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .css {
+            border: 2px solid greenyellow;
+        }
+        .css h2 {
+            width: 200px;
+            height: 100px;
+            background: blue;
+            line-height: 100px;
+            color: greenyellow;
+            font-size: 24px;;
+        }
+        .aaa {
+            width: 500px;
+            height: 500px;
+            margin: 20px;
+            background-color: skyblue;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="aaa">占位图</div>
+    <div class="aaa">占位图</div>
+    <div class="aaa">占位图</div>
+    <div class="css">
+        <h2>这是 h2 标题</h2>
+        <p></p>
+        <div></div>
+    </div>
+    <script>
+        $('.css p').css({
+            width: '200px',
+            height: '200px',
+            border: '2px solid #f00',
+            margin: '20px auto',
+            padding: '10px'
+        })
+
+        // 设置定位
+        $('.css').css('position', 'relative')
+        $('.css div').css({
+            width: '100px',
+            height: '100px',
+            background: 'pink',
+            position: 'absolute',
+            left: '100px',
+            top: '200px'
+        })
+
+        // 获取位置信息
+
+        // offset 是相对于 body的，而不是相对于父级
+        console.log("$(.css div).offset().left: ", $('.css div').offset().left)     // 110
+        console.log("$(.css div).offset().top: ", $('.css div').offset().top)       // 210  
+
+        // offset 也可以设置
+        $('.css div').offset({
+            left: 200,
+            top: 2000
+        })  // 设置之后，元素标签上 left: 190px; top: 418px;  为什么这样呢，因为 offset 设置的是相对于 body 的距离，但是 元素上 top left 是相对于 定位的父元素，因此要通过 计算 父级定位元素相对于 body 的距离，然后用 offset 设置的 top 做个计算
+                                    
+
+
+
+
+        // position 是相对于父级的
+        console.log("$('.css div').position(): ", $('.css div').position())     //  和上边的值对应的
+
+
+        // scrollTop scrollLeft
+        console.log("$(document).scrollTop: ", $(document).scrollTop())
+        console.log("$(document).scrollLeft: ", $(document).scrollLeft())
+
+
+        setTimeout(() => {
+            $(document).scrollTop(300)
+        }, 2000)
+    </script>
+</body>
+</html>

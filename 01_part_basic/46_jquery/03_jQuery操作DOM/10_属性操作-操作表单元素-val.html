@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .attr img {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 属性操作：通用属性操作 -->
+    <div class="attr">
+        <img src="images/yangjian.png" yangkun="xizhou" alt="">
+        <!-- <img src="images/shihao.jpeg" alt=""> -->
+        <input type="text" value="这是一个正经的输入框">
+    </div>
+    <script>
+        // 获取值：.val() 不带参数
+        console.log("$('.attr input').val(): ", $('.attr input').val())
+        // 设置值：.val() 携带参数
+        $('.attr input').val('这是使用 val() 修改之后的值')
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="insertAdd">
+        <p>在内部插入元素</p>
+    </div>
+    <script>
+        // 插入元素（内部插入） append是在最后插入
+        // $('.insertAdd').append('<h2>插入的 h2 元素 01</h2>')
+        // $('.insertAdd').append('<h2>插入的 h2 元素 02</h2>')
+        // $('.insertAdd').append('<h2>插入的 h2 元素 03</h2>')
+        // $('.insertAdd').append('<h2>插入的 h2 元素 04</h2>')
+
+        // ⚠️ append 的参数是已经有的元素，会把之前的剪切，插入到目标元素内，之前的不存在了
+        // $('.insertAdd').append($('.insertAdd p'))
+
+        // appendTo
+        // $('<h2>appendTo 添加的元素</h2>').appendTo('.insertAdd')
+
+        // prepend 在前面插入
+        $('.insertAdd').prepend('<h2>prepend 插入元素 会插入到前面，append 会插入到后面 01</h2>')
+        $('.insertAdd').prepend('<h2>prepend 插入元素 会插入到前面，append 会插入到后面 02</h2>')
+    </script>
+</body>
+</html>

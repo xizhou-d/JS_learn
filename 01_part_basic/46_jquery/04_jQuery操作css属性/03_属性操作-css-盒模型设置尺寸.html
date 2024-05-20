@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .css {
+            border: 2px solid greenyellow;
+        }
+        .css h2 {
+            width: 200px;
+            height: 100px;
+            background: blue;
+            line-height: 100px;
+            color: greenyellow;
+            font-size: 24px;;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="css">
+        <h2>这是 h2 标题</h2>
+        <p></p>
+        <div></div>
+    </div>
+    <script>
+        $('.css p').css({
+            width: '200px',
+            height: '200px',
+            border: '2px solid #f00',
+            margin: '20px auto',
+            padding: '10px'
+        })
+
+        // 设置尺寸
+        $('.css p').width(300).height(100).innerWidth(400)      // ⚠️   如果设置的 innerWidth 大于 width + padding, 那么 padding 保持不变 width 变大
+        $('.css p').width(300).height(100).innerWidth(400).outerWidth(500)      // ⚠️   同上，变化的只是元素的 width
+    </script>
+</body>
+</html>
