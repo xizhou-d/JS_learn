@@ -15,21 +15,97 @@
 
     <iframe src="./index2.html" id="iframe01" width='800px' height="600px" frameborder="10"></iframe>
     <script>
-        // window.onload = function() {
-        //     const iframeEl = document.getElementById('iframe01')
-        //     console.log('iframeEl', iframeEl);
-        //     console.log('iframeEl.contentWindow', iframeEl.contentWindow);
-        //     iframeEl.contentWindow.postMessage({
-        //         callbackId : null,
-        //         type: "initialize",
-        //         data: {
-        //             switchButtonStyle: {
-        //                 text: 'Contact Us',
-        //                 type: 'icon-only'
-        //             }
-        //         }
-        //     })
-        // }
+        window.onload = function() {
+            const iframeEl = document.getElementById('iframe01')
+            console.log('iframeEl', iframeEl);
+            console.log('iframeEl.contentWindow', iframeEl.contentWindow);
+            console.log('iframeEl.contentDocument', iframeEl.contentDocument);
+            iframeEl.contentDocument.addEventListener('click', function() {
+                console.log('SSSSSS');
+                iframeEl.contentWindow.postMessage(
+                    {
+                        callbackId : null,
+                        // type: this.jishiyustatus === 'minmize' ? 'maxmize' : 'minmize',
+                        type: 'maxmize'
+                    }
+                )
+            })
+            iframeEl.contentWindow.postMessage({
+                    callbackId : null,
+                    type: "initialize",
+                    data: {
+                        "welcomeBanner": "",
+                        "code": "0b7b8b1e0d9e6a22b8353679c7f8e2e1",
+                        "swithOpen": true,
+                        "title": "Please contact us",
+                        "toUserId": "0b7b8b1e0d9e6a22b8353679c7f8e2e1",
+                        "colors": "",
+                        "inputMaxLength": 2000,
+                        "infoInvestigate": {
+                            "phone": "",
+                            "fullNameStatus": false,
+                            "fullName": "",
+                            "phoneStatus": false,
+                            "promptInfo": "Please introduce yourself",
+                            "email": ""
+                        },
+                        "mobileSize": 50,
+                        "switchButtonStyle": {
+                            "text": "Contact Us",
+                            "type": "icon-only"
+                        },
+                        "logo": "",
+                        "theme": {
+                            "name": "默认样式",
+                            "styles": {
+                                "previewStyle": {
+                                    "background": "linear-gradient(-30deg, #98DF25 0%, #19CBC0 100%)"
+                                },
+                                "loginButton": {
+                                    "background": "linear-gradient(-90deg, #98DF25 0%, #19CBC0 100%)"
+                                },
+                                "switchButton": {
+                                    "background": "linear-gradient(-120deg, #98DF25 0%, #19CBC0 100%)"
+                                },
+                                "message": {
+                                    "background": "linear-gradient(270deg, #98DF25 0%, #19CBC0 100%)"
+                                },
+                                "sendButton": {
+                                    "background": "linear-gradient(-30deg, #98DF25 0%, #19CBC0 100%)"
+                                }
+                            },
+                            "value": "default"
+                        },
+                        "appKey": "y745wfm8y5b7v",
+                        "placeholder": "Chat with us",
+                        "lang": "en",
+                        "welcome": "Any questions, please contact us here, we will help you as soon as possible",
+                        "mobilePosition": {
+                            "padding": 30,
+                            "align": "right"
+                        },
+                        "visible": true,
+                        "salt": "f10fbee52f3db4f8c64435889b49e4e4",
+                        "imMail": {
+                            "mailTitle": "Thanks for your Messenger",
+                            "mailAddress": "",
+                            "mailId": "",
+                            "enableStatus": 0
+                        },
+                        "site": "std",
+                        "size": 50,
+                        "imQuestion": {
+                            "questionSubs": [],
+                            "enableStatus": true
+                        },
+                        "name": "test2",
+                        "position": {
+                            "padding": 30,
+                            "align": "right"
+                        }
+                    }
+                })
+        }
         
     </script>
 </body>

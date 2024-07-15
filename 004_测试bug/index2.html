@@ -13,12 +13,17 @@
     </style>
 </head>
 <body>
-    <div>加西亚.马尔克斯</div>
+    <button class="ele_div">加西亚.马尔克斯</div>
     <script type="text/javascript" src="//cdnus.jishiyuchat.com/www/im/jsy_im_plugin.js?code=0b7b8b1e0d9e6a22b8353679c7f8e2e1" defer></script>
     <script>
         window.onload = function() {
-            console.log('index.html loaded');
+            console.log('index.html2 loaded');
+            console.log('ele_deiv', document.getElementById('ele_div'));
+            document.getElementById('ele_div').addEventListener('click', function() {
+                console.log('ele_div was clicked.');
+            })
         }
+        
     </script>
 </body>
 </html>
