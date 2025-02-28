@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #viewport {
+      height: 400px;
+      width: 300px;
+      border: 1px solid #ccc;
+      overflow: auto;
+      position: relative;
+    }
+    #scroll-holder {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1px; /* 无需可见，仅撑起高度 */
+    }
+    .item {
+      position: absolute;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <div id="viewport">
+    <div id="scroll-holder"></div>
+    <div id="visible-items"></div>
+  </div>
+
+  <script>
+    // 初始化参数
+    const TOTAL_ITEMS = 10000;    // 总数据量
+    const ITEM_HEIGHT = 40;       // 每项高度（固定）
+    const VIEWPORT_HEIGHT = 400;  // 可视区域高度
+    const BUFFER_COUNT = 5;       // 缓冲数量（多渲染几项避免滚动白屏）
+
+    const viewport = document.getElementById('viewport');
+    const scrollHolder = document.getElementById('scroll-holder');
+    const visibleItems = document.getElementById('visible-items');
+    let nodePool = [];             // DOM 节点池
+
+    // 生成模拟数据
+    const data = Array.from({ length: TOTAL_ITEMS }, (_, i) => ({
+      id: i,
+      text: `Item ${i}`
+    }));
+
+    // 初始化占位高度
+    scrollHolder.style.height = `${TOTAL_ITEMS * ITEM_HEIGHT}px`;
+
+    // 核心：渲染可视项
+    function renderVisibleItems() {
+      const scrollTop = viewport.scrollTop;
+      // 计算起止索引（含缓冲区）
+      const startIndex = Math.max(
+        Math.floor(scrollTop / ITEM_HEIGHT) - BUFFER_COUNT,
+        0
+      );
+      const endIndex = Math.min(
+        startIndex + Math.ceil(VIEWPORT_HEIGHT / ITEM_HEIGHT) + BUFFER_COUNT * 2,
+        TOTAL_ITEMS - 1
+      );
+
+      // 回收不可见节点到池中
+      recycleNodes(startIndex, endIndex);
+
+      // 使用 DocumentFragment 批量操作
+      const fragment = document.createDocumentFragment();
+      for (let i = startIndex; i <= endIndex; i++) {
+        let node = visibleItems.querySelector(`[data-index="${i}"]`);
+        if (!node) {
+          node = getNodeFromPool(); // 优先从池中取
+          node.dataset.index = i;
+          node.textContent = data[i].text;
+          node.style.top = `${i * ITEM_HEIGHT}px`;
+          node.classList.add('item');
+        }
+        fragment.appendChild(node);
+      }
+      visibleItems.appendChild(fragment);
+    }
+
+    // 复用节点：回收视窗外的节点
+    function recycleNodes(start, end) {
+      Array.from(visibleItems.children).forEach(node => {
+        const index = parseInt(node.dataset.index, 10);
+        if (index < start || index > end) {
+          visibleItems.removeChild(node);
+          nodePool.push(node); // 放入池中
+        }
+      });
+    }
+
+    // 获取节点：优先复用，其次新建
+    function getNodeFromPool() {
+      return nodePool.length > 0 
+        ? nodePool.pop() 
+        : document.createElement('div');
+    }
+
+    // 滚动事件监听（防抖优化）
+    let isRendering = false;
+    viewport.addEventListener('scroll', () => {
+      if (!isRendering) {
+        isRendering = true;
+        requestAnimationFrame(() => {
+          renderVisibleItems();
+          isRendering = false;
+        });
+      }
+    });
+
+    // 初始渲染
+    renderVisibleItems();
+  </script>
+</body>
+</html>
